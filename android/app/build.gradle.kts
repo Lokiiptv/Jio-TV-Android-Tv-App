@@ -19,12 +19,11 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-    val ftvApplicationId = project.findProperty("APPLICATION_ID") as? String ?: "com.example.android.sampletvinput"
+    val ftvApplicationId = project.findProperty("APPLICATION_ID") as? String ?: "com.jio.tvplus.jio_tv_plus_flutter"
 
     defaultConfig {
-        // Amazon Fire OS enforces a strict live TV provider allowlist in ProviderRegistry.
-        // com.example.android.sampletvinput is pre-whitelisted on all retail Fire TV devices for developer testing.
-        // For production Amazon Appstore releases, set -PAPPLICATION_ID=com.jio.tvplus.jio_tv_plus_flutter
+        // Use the branded application ID by default for normal Android TV / Fire TV installation.
+        // Amazon Fire TV native TIF discovery may require an Amazon-approved package ID; verify separately.
         applicationId = ftvApplicationId
         minSdk = 21
         targetSdk = flutter.targetSdkVersion
